@@ -1,0 +1,70 @@
+import habitantes.gandalf
+import habitantes.tomBombadil
+import armas.*
+
+
+describe "gandalf" {
+
+  test "gandalf tiene una vida inicial" {
+    assert.equals(100, gandalf.vida())
+  }
+
+  test "Poder de Gandalf con toda la vida y todas sus armas" {
+    assert.equals(2800, gandalf.poder())
+  }
+
+  test "Poder de Gandalf sin armas y con 80 de vida" {
+    gandalf.vida(80)
+    gandalf.quitarArmas()
+    assert.equals(1200, gandalf.poder())
+  }
+
+  test "Poder de Gandalf con 5 de vida y su báculo" {
+    gandalf.vida(5)
+    gandalf.quitarArmas()
+    gandalf.equipar(baculo)
+    assert.equals(2300, gandalf.poder())
+  }
+
+  test "Poder de Gandalf con 30 de vida, su báculo y su espada pero versión enana" {
+    gandalf.vida(30)
+    gandalf.quitarArmas()
+    gandalf.equipar(baculo)
+    gandalf.equipar(espadaEnana)
+    assert.equals(1650, gandalf.poder())
+  }
+
+  test "Gandalf full vida y con sus armas, puede atravesar Lebennin" {
+    assert.equals(true, gandalf.puedeAtravesarLebennin())
+  }
+
+  test "Gandalf sin armas y con 11 de vida puede atravesar Lebennin" {
+    gandalf.quitarArmas()
+    gandalf.vida(11)
+    assert.equals(false, gandalf.puedeAtravesarLebennin())
+  }
+
+  test "Gandalf sin armas y con 11 de vida puede atravesar Minas Tirith" {
+    gandalf.quitarArmas()
+    gandalf.vida(11)
+    assert.equals(false, gandalf.puedeAtravesarMinasTirith())
+  }
+
+  test "Gandalf full vida y con sus armas, puede atravesar el camino compuesto por Lebennin y Minas Tirith" {
+    assert.equals(true, gandalf.puedeAtravesarCaminoDeGondor())
+  }
+
+  test "Gandalf Fullvida y con sus armas, atraviesa el camino compuesto por Lebennin y Minas Tirith" {
+    gandalf.recorrerCaminoDeGondor()
+    assert.equals(90, gandalf.vida())
+  }
+}
+
+describe "Tom Bombadil" {
+  test "Tom puede atravesar Lebennin" {
+    assert.equals(true, tomBombadil.puedeAtravesarLebennin())
+  }
+  //test "Tom atraviesa el camino que pasa por Gondor antes mencionado" {
+    //assert.equals(tomBombadil.recorrerCaminoDeGondor())
+  //}
+}
