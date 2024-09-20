@@ -56,6 +56,7 @@ object gandalf {
 
 object tomBombadil {
   method puedeAtravesar() = true
+  method puedeAtravesarMinasTirith() = true
   method puedeAtravesarLebennin() = true
   method puedeAtravesarLossrnach() = true
   method puedeAtravesarCaminoDeGondor() = true
